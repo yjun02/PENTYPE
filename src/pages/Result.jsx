@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import { calculateScores, getPentaCode, getPercentage, decodeResultData } from '../utils/scoring';
 import { pentaTypes } from '../data/types';
+import AdSense from '../components/AdSense';
 import './Result.css';
 
 const Result = () => {
@@ -201,6 +202,10 @@ const Result = () => {
           </div>
         </div>
 
+        {/* Multiplex Ad - Spans full width at the bottom of the layout */}
+        <div style={{ gridColumn: '1 / -1', width: '100%' }} data-html2canvas-ignore="true">
+          <AdSense adSlot="8013575517" adFormat="autorelaxed" type="multiplex" />
+        </div>
       </div>
 
       {/* Share Modal */}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { questions, mbtiTypes } from '../data/questions';
 import { calculateScores, encodeResultData } from '../utils/scoring';
+import AdSense from '../components/AdSense';
 import './Quiz.css';
 
 const Quiz = () => {
@@ -102,6 +103,11 @@ const Quiz = () => {
               </button>
             ))}
           </div>
+          
+          {/* Display Ad */}
+          <div style={{ marginTop: '2rem', width: '100%', minHeight: '100px' }}>
+            <AdSense adSlot="9391054607" />
+          </div>
         </div>
       </div>
     );
@@ -143,6 +149,11 @@ const Quiz = () => {
           <div className="progress-fill" style={{ width: `${progress}%` }}>
             <span className="progress-text">{Math.round(progress)}%</span>
           </div>
+        </div>
+
+        {/* Display Ad */}
+        <div style={{ marginTop: '2rem', width: '100%', minHeight: '100px' }}>
+          <AdSense adSlot="9391054607" />
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Landing.css';
+import AdSense from '../components/AdSense';
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -61,6 +62,9 @@ const Landing = () => {
             <button className="back-to-about" onClick={() => setView('about')}>← 뒤로가기</button>
           </div>
         )}
+        
+        {/* Display Ad */}
+        <AdSense adSlot="9391054607" />
       </div>
 
       <footer className="landing-footer">
