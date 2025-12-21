@@ -1,0 +1,288 @@
+.quiz-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--bg-color);
+}
+
+.quiz-container {
+  max-width: 900px;
+  width: 100%;
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  position: relative;
+  background: var(--surface-color); /* Ensure white background */
+  border-radius: var(--border-radius);
+  /* Remove flex stretching that caused large gaps */
+  display: block; 
+}
+
+.quiz-nav-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 0 3rem;
+}
+
+.nav-btn {
+  background: white;
+  border: 3px solid var(--secondary-color);
+  color: var(--secondary-color);
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  opacity: 0.8;
+}
+
+.nav-btn:hover {
+  background: var(--secondary-color);
+  color: white;
+  opacity: 1;
+}
+
+.nav-btn.next {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(10px);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-btn.next:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-btn.next.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+
+.progress-bar-container {
+  width: 100%;
+  max-width: 800px; /* Limit width for better look */
+  height: 28px;
+  background: white; /* Explicitly white */
+  display: flex;
+  align-items: center;
+  margin: 3rem auto 0; /* Reduced gap, centered */
+  border: 2px solid #eee; /* Define the track */
+  border-radius: 50px; /* Fully rounded track */
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--primary-color);
+  background-image: linear-gradient(
+    45deg, 
+    rgba(255, 255, 255, 0.2) 25%, 
+    transparent 25%, 
+    transparent 50%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0.2) 75%, 
+    transparent 75%, 
+    transparent
+  );
+  background-size: 20px 20px; /* Finer stripe */
+  transition: width 0.5s ease-out;
+  display: flex;
+  align-items: center;
+  border-radius: 0; /* Fill fits into the container's radius */
+  position: relative;
+  min-width: 0;
+  animation: progressStripe 1s linear infinite;
+}
+
+@keyframes progressStripe {
+  from { background-position: 40px 0; }
+  to { background-position: 0 0; }
+}
+
+.progress-fill::after {
+  display: none; /* Remove shine effect as it might be 'too much' */
+}
+
+.progress-text {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+/* Ensure text is visible even when progress is very low */
+.progress-fill[style*="width: 0%"] .progress-text,
+.progress-fill[style*="width: 1%"] .progress-text,
+.progress-fill[style*="width: 2%"] .progress-text,
+.progress-fill[style*="width: 3%"] .progress-text,
+.progress-fill[style*="width: 4%"] .progress-text,
+.progress-fill[style*="width: 5%"] .progress-text,
+.progress-fill[style*="width: 6%"] .progress-text,
+.progress-fill[style*="width: 7%"] .progress-text,
+.progress-fill[style*="width: 8%"] .progress-text,
+.progress-fill[style*="width: 9%"] .progress-text {
+  right: auto;
+  left: calc(100% + 15px);
+  color: var(--primary-color);
+  text-shadow: none;
+}
+
+.step-count {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  letter-spacing: 0.05em;
+}
+
+.question-text {
+  font-size: 1.8rem;
+  margin-bottom: 4rem;
+  min-height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4rem;
+}
+
+.options-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0 5rem;
+}
+
+.option-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.option-btn {
+  border-radius: 50%;
+  border: 4px solid var(--primary-color);
+  background: white;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.option-btn:hover, .option-btn.selected {
+  background: var(--primary-color);
+  transform: scale(1.15);
+  box-shadow: 0 0 15px rgba(255, 159, 178, 0.4);
+}
+
+.size-1 { width: 60px; height: 60px; }
+.size-2 { width: 50px; height: 50px; }
+.size-3 { width: 40px; height: 40px; }
+.size-4 { width: 50px; height: 50px; }
+.size-5 { width: 60px; height: 60px; }
+
+.option-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.mbti-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 3rem 5rem 0;
+}
+
+.quiz-container h1 {
+  margin-top: 1rem;
+  padding: 0 3rem;
+  color: var(--text-primary);
+}
+
+.mbti-btn {
+  padding: 0.6rem;
+  border: 3px solid var(--secondary-color);
+  background: white;
+  color: var(--text-primary);
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 2rem;
+  transition: all 0.2s;
+}
+
+.mbti-btn:hover {
+  background: var(--secondary-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .quiz-page {
+    padding: 1rem;
+    padding-top: 5rem;
+  }
+
+  .progress-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 36px;
+    z-index: 100;
+    margin-bottom: 0;
+  }
+
+  .quiz-container {
+    padding: 2rem 1rem 4rem;
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .quiz-nav-top {
+    margin-bottom: 2rem;
+  }
+
+  .nav-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .step-count {
+    font-size: 1.1rem;
+  }
+
+  .options-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .option-buttons {
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .question-text {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+  }
+
+  .mbti-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .mbti-btn {
+    padding: 0.5rem 0.2rem;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,252 @@
+.landing-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.bg-gradient-mesh {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, #fff0f3 0%, transparent 40%),
+              radial-gradient(circle at 70% 60%, #eefcff 0%, transparent 40%),
+              radial-gradient(circle at 40% 80%, #fff9e6 0%, transparent 40%);
+  z-index: -1;
+  filter: blur(80px);
+  opacity: 0.8;
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.logo {
+  font-size: 7rem;
+  font-weight: 950;
+  color: var(--primary-color);
+  text-shadow: 6px 6px 0px rgba(255, 159, 178, 0.2);
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+/* About Section */
+.about-section {
+  max-width: 1000px;
+  width: 100%;
+  padding: 3rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.about-section.clickable {
+  cursor: pointer;
+}
+
+.about-section.clickable:hover {
+  transform: scale(1.02);
+  border-color: var(--secondary-color);
+  box-shadow: 12px 12px 0px rgba(136, 225, 255, 0.1);
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 3rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.about-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.about-emoji {
+  font-size: 2.5rem;
+}
+
+.about-item h4 {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+}
+
+.about-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.cta-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.about-section:hover .cta-overlay {
+  opacity: 1;
+}
+
+.cta-text {
+  background: var(--primary-color);
+  color: white;
+  padding: 1.2rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 1.5rem;
+  box-shadow: 0 8px 30px rgba(255, 159, 178, 0.4);
+}
+
+.click-hint {
+  margin-top: 3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  animation: pulse 2s infinite;
+}
+
+/* Tracks View */
+.tracks-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.tracks-container {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.track-card {
+  flex: 1;
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  background: #fff;
+}
+
+.track-card:hover {
+  border-color: var(--secondary-color);
+  box-shadow: 12px 12px 0px rgba(136, 225, 255, 0.1);
+}
+
+.track-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.track-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.track-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.track-link {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-top: auto;
+}
+
+.track-link.secondary {
+  color: var(--secondary-color);
+}
+
+.back-to-about {
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.back-to-about:hover {
+  color: var(--primary-color);
+}
+
+.landing-footer {
+  margin-top: auto;
+  padding: 2rem 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-5px); }
+  100% { opacity: 0.4; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 4rem;
+  }
+  .about-section {
+    padding: 2rem 1.5rem;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .tracks-container {
+    flex-direction: column;
+  }
+  .track-card {
+    padding: 2rem 1.5rem;
+  }
+}
