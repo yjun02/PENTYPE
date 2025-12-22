@@ -6,6 +6,7 @@ import AdSense from '../components/AdSense';
 const Landing = () => {
   const navigate = useNavigate();
   const [view, setView] = useState('about'); // 'about' or 'tracks'
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="landing-page animate-fade">
@@ -33,6 +34,15 @@ const Landing = () => {
                 <span className="about-emoji">🧱</span>
                 <h4>5번째 지표: W/O</h4>
                 <p><strong>Wall(경계형)</strong>과 <strong>Organic(융합형)</strong> 지표를 새롭게 정의합니다.</p>
+                <button 
+                  className="learn-more-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowModal(true);
+                  }}
+                >
+                  지표의 의미 알아보기 →
+                </button>
               </div>
               <div className="about-item">
                 <span className="about-emoji">📊</span>
@@ -70,6 +80,55 @@ const Landing = () => {
       <footer className="landing-footer">
         <p>© 2025 PENTYPE. Your boundary defines you.</p>
       </footer>
+
+      <WhyWOModal isOpen={showModal} onClose={() => setShowModal(false)} />
+    </div>
+  );
+};
+
+const WhyWOModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content glass" onClick={(e) => e.stopPropagation()}>
+        <button className="close-btn" onClick={onClose}>&times;</button>
+        <header className="modal-header">
+          <h2>📚 왜 W/O 지표인가요?</h2>
+          <p className="modal-intro">MBTI가 당신의 '엔진(동력)'이라면,<br/>W/O는 당신이 세상을 거르는 '필터'입니다.</p>
+        </header>
+
+        <div className="modal-body">
+          <section className="modal-section">
+            <h3>🔹 하트만의 경계 이론(Boundaries in the Mind)</h3>
+            <p>심리학자 어니스트 하트만은 사람마다 마음의 경계 두께가 다르다는 것을 발견했습니다.</p>
+            <div className="theory-grid">
+              <div className="theory-card w">
+                <h5>W (Wall) - 두꺼운 경계</h5>
+                <p>'분리'와 '구분'에 능숙합니다. 공과 사를 철저히 나누며, 외부 자극으로부터 자신을 신중하게 보호합니다.</p>
+              </div>
+              <div className="theory-card o">
+                <h5>O (Organic) - 얇은 경계</h5>
+                <p>'연결'과 '융합'을 지향합니다. 타인의 감정에 깊이 공감하며, 경계 없는 유연하고 창의적인 소통을 즐깁니다.</p>
+              </div>
+            </div>
+          </section>
+
+          <section className="modal-section">
+            <h3>🔹 일과 삶의 경계 관리 (Segmentors vs Integrators)</h3>
+            <p>현대인의 라이프스타일에서도 W/O는 뚜렷하게 나타납니다.</p>
+            <ul>
+              <li><strong>분리자 (W):</strong> 업무와 사생활의 경계를 명확히 긋고, 페르소나를 활용해 사회적 역할을 수행합니다.</li>
+              <li><strong>통합자 (O):</strong> 일과 삶이 자연스럽게 섞이는 것을 선호하며, 어디서든 '진짜 나'로 존재하기를 원합니다.</li>
+            </ul>
+          </section>
+
+          <footer className="modal-footer">
+            <p>"나는 왜 E인데도 가끔 혼자 있고 싶을까?"<br/>"나는 왜 I인데도 처음 본 사람에게 속마음을 털어놓을까?"</p>
+            <p className="footer-highlight">그 해답은 당신의 5번째 지표, W/O에 있습니다.</p>
+          </footer>
+        </div>
+      </div>
     </div>
   );
 };
