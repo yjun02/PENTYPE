@@ -105,9 +105,7 @@ const Quiz = () => {
           </div>
           
           {/* Display Ad */}
-          <div style={{ marginTop: '2rem', width: '100%', minHeight: '100px' }}>
-            <AdSense adSlot="9391054607" />
-          </div>
+          <AdSense adSlot="9391054607" />
         </div>
       </div>
     );
@@ -115,7 +113,7 @@ const Quiz = () => {
 
   return (
     <div className="quiz-page animate-fade">
-      <div className="quiz-container glass">
+      <div className="quiz-container glass" key={currentQuestion?.id}>
         <div className="quiz-nav-top">
           <button className="nav-btn prev" onClick={handlePrev}>
             {currentStep === 0 ? '메인 화면' : '이전 질문'}
@@ -152,9 +150,7 @@ const Quiz = () => {
         </div>
 
         {/* Display Ad */}
-        <div style={{ marginTop: '2rem', width: '100%', minHeight: '100px' }}>
-          <AdSense adSlot="9391054607" />
-        </div>
+        <AdSense adSlot="9391054607" />
       </div>
     </div>
   );

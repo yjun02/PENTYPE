@@ -10,7 +10,7 @@ const AdSense = ({ adSlot, adFormat = 'auto', fullWidth = true, style = { displa
   }, []);
 
   return (
-    <div className={`adsense-container ${type}`} style={{ margin: '2rem 0', overflow: 'hidden', minHeight: '100px' }}>
+    <div className={`adsense-container ${type}`} style={{ margin: '1rem 0', overflow: 'hidden' }}>
       <ins
         className="adsbygoogle"
         style={style}

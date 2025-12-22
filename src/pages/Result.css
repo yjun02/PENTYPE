@@ -239,34 +239,68 @@
 
 @media (max-width: 600px) {
   .result-page {
-    padding: 2rem 1rem;
-  }
-  .result-code {
-    font-size: 2.8rem;
-  }
-  .result-nickname {
-    font-size: 1.4rem;
-  }
-  .metrics-container, .description-container {
     padding: 1.5rem 1rem;
   }
+  .result-code {
+    font-size: 2.5rem; /* Reduced from 2.8rem */
+  }
+  .result-nickname {
+    font-size: 1.25rem; /* Reduced from 1.4rem */
+  }
+  .result-quote {
+    padding: 1.5rem;
+    font-size: 1.15rem;
+  }
+  .metrics-container, .description-container {
+    padding: 1.2rem 1rem;
+  }
+  .metrics-container h3, .description-container h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
   .metric-labels {
-    font-size: 0.8rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
+    font-size: 0.9rem; /* Slightly larger than before but compact */
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 0.2rem;
   }
   .metric-title {
-    width: 100%;
+    width: auto;
     text-align: center;
-    order: -1;
+    order: 0;
+    font-size: 0.85rem;
+  }
+  .active {
+    font-size: 1rem;
+  }
+  .metric-bar-container {
+    height: 28px;
+  }
+  .description-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .desc-section {
+    margin-bottom: 1.5rem;
+  }
+  .desc-section h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .desc-summary {
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    border-width: 2px;
   }
   .action-buttons {
     flex-direction: column;
     width: 100%;
+    gap: 0.8rem;
   }
   .action-buttons button {
     width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -423,4 +457,37 @@
 @keyframes popIn {
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+@media (min-width: 1200px) {
+  .result-code {
+    font-size: 6.5rem;
+  }
+  .result-nickname {
+    font-size: 2.5rem;
+  }
+  .result-quote {
+    font-size: 2.2rem;
+  }
+  .metrics-container h3, .description-container h3 {
+    font-size: 2rem;
+  }
+  .metric-labels {
+    font-size: 1.8rem;
+  }
+  .metric-half-text {
+    font-size: 1.25rem;
+  }
+  .description-container p {
+    font-size: 1.5rem;
+  }
+  .desc-section h4 {
+    font-size: 1.8rem;
+  }
+  .desc-summary {
+    font-size: 1.8rem;
+  }
+  .share-btn, .reset-btn {
+    font-size: 1.5rem;
+    padding: 1.5rem 4rem;
+  }
 }
