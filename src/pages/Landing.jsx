@@ -116,12 +116,17 @@ const Landing = () => {
           </div>
         )}
         
-        {/* Display Ad */}
-        <AdSense adSlot="9391054607" />
+        {/* Display Ad - Only on content-rich views */}
+        {(view === 'about' || view === 'wo') && (
+          <AdSense adSlot="9391054607" />
+        )}
       </div>
 
       <footer className="landing-footer">
         <p>© 2025 PENTYPE. Your boundary defines you.</p>
+        <div className="footer-links">
+          <button className="footer-link-btn" onClick={() => navigate('/privacy')}>개인정보처리방침</button>
+        </div>
       </footer>
     </div>
   );
